@@ -18031,7 +18031,17 @@ static int __init hdd_module_init(void)
 
 	ret = wlan_init_sysfs();
 	if (ret)
+	{
 		hdd_err("Failed to create sysfs entry");
+		return ret;
+	}
+
+	ret = wlan_hdd_state_ctrl_param_create();
+	if (ret)
+	{
+		pr_err("wlan_hdd_state_create:%x\n", ret);
+		return ret;
+	}
 
 	return ret;
 }
