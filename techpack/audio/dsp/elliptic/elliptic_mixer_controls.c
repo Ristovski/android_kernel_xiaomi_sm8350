@@ -707,7 +707,7 @@ int elliptic_system_configuration_param_get(
 	struct soc_mixer_control *mc =
 		(struct soc_mixer_control *)kcontrol->private_value;
 
-	pr_err("%s: reg: %d shift: %d\n", __func__, mc->reg, mc->shift);
+	pr_info("%s: reg: %d shift: %d\n", __func__, mc->reg, mc->shift);
 
 	if (mc->reg != ELLIPTIC_SYSTEM_CONFIGURATION)
 		return -EINVAL;
@@ -814,7 +814,7 @@ int elliptic_system_configuration_param_put(
 		(struct soc_mixer_control *)kcontrol->private_value;
 	struct elliptic_system_configuration_parameter param;
 
-	pr_err("%s: reg: %d shift: %d val: %d\n", __func__, mc->reg, mc->shift, 
+	pr_info("%s: reg: %d shift: %d val: %d\n", __func__, mc->reg, mc->shift, 
 		ucontrol->value.integer.value[0]);
 
 	if (mc->reg != ELLIPTIC_SYSTEM_CONFIGURATION)
