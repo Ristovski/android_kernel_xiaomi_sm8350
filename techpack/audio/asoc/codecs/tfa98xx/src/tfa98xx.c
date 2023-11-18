@@ -2303,8 +2303,6 @@ static void tfa98xx_container_loaded(const struct firmware *cont, void *context)
 
 	tfa98xx->dsp_fw_state = TFA98XX_DSP_FW_FAIL;
 
-	printk(KERN_ERR "%s-1\n",__func__);//
-
 	if (!cont) {
 		pr_err("Failed to read %s\n", fw_name);
 		return;
@@ -2847,8 +2845,6 @@ static int tfa98xx_hw_params(struct snd_pcm_substream *substream,
 	unsigned int rate;
 	int prof_idx;
 
-	printk(KERN_ERR "%s-1\n",__func__);//
-
 	/* Supported */
 	rate = params_rate(params);
     tfa98xx->tfa->bitwidth = params_width(params);
@@ -2969,7 +2965,7 @@ static int tfa98xx_mute(struct snd_soc_dai *dai, int mute, int stream)
 #endif
 	dev_info(&tfa98xx->i2c->dev, "%s: state: %d\n", __func__, mute);
 
-	printk(KERN_ERR "%s-1 mute:\n",__func__,mute);//
+	pr_info("tfa98xx_mute mute: %d\n", mute);
 
 	if (no_start) {
 		pr_debug("no_start parameter set no tfa_dev_start or tfa_dev_stop, returning\n");
@@ -3124,7 +3120,7 @@ static int tfa98xx_probe(struct snd_soc_codec *codec)
 #endif
 	int ret;
 
-	printk(KERN_ERR "tfa98xx_probe enter\n");///
+	pr_info("tfa98xx_probe enter\n");
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4,18,0)
 	snd_soc_component_init_regmap(codec, tfa98xx->regmap);
@@ -3143,7 +3139,7 @@ static int tfa98xx_probe(struct snd_soc_codec *codec)
 	tfa98xx->codec = codec;
 
 	ret = tfa98xx_load_container(tfa98xx);
-	printk(KERN_ERR "Container loading requested: %d\n", ret);//
+	pr_info("Container loading requested: %d\n", ret);
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3,16,0)
 	codec->control_data = tfa98xx->regmap;
@@ -3318,7 +3314,7 @@ static int tfa98xx_parse_dt(struct device *dev, struct tfa98xx *tfa98xx,
 
 	tfa98xx->spk_sw_gpio = of_get_named_gpio(np, "spk-sw-gpio", 0);
 	if (tfa98xx->spk_sw_gpio < 0)
-		printk(KERN_ERR  "No spk_sw_gpio GPIO provided\n");
+		pr_err("No spk_sw_gpio GPIO provided\n");
 	return 0;
 }
 
