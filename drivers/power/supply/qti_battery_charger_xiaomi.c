@@ -1947,7 +1947,7 @@ static ssize_t power_max_show(struct class *c, struct class_attribute *attr,
 			usb_present = val.intval;
 		else
 			usb_present = 0;
-		pr_err("usb_present: %d\n", usb_present);
+		pr_info("usb_present: %d\n", usb_present);
 	}
 	if (usb_present) {
 		rc = read_property_id(bcdev, xm_pst, XM_PROP_APDO_MAX);
@@ -3102,7 +3102,7 @@ void xm_charger_debug_info_print_work(struct work_struct *work)
 			usb_present = val.intval;
 		else
 			usb_present = 0;
-		pr_err("usb_present: %d\n", usb_present);
+		pr_info("usb_present: %d\n", usb_present);
 	} else {
 		return;
 	}
@@ -3122,7 +3122,7 @@ void xm_charger_debug_info_print_work(struct work_struct *work)
 		else
 			ibus_ua = 0;
 
-		pr_err("vbus_vol_uv: %d, ibus_ua: %d\n", vbus_vol_uv, ibus_ua);
+		pr_info("vbus_vol_uv: %d, ibus_ua: %d\n", vbus_vol_uv, ibus_ua);
 		interval = CHARGING_PERIOD_S;
 	} else {
 		interval = DISCHARGE_PERIOD_S;
