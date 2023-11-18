@@ -3971,6 +3971,7 @@ static inline void icnss_runtime_pm_init(struct icnss_priv *priv)
 	pm_runtime_forbid(&priv->pdev->dev);
 	pm_runtime_set_active(&priv->pdev->dev);
 	pm_runtime_enable(&priv->pdev->dev);
+	device_enable_async_suspend(&priv->pdev->dev);
 }
 
 static inline void icnss_runtime_pm_deinit(struct icnss_priv *priv)
