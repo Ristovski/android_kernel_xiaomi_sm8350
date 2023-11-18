@@ -615,6 +615,7 @@ static void gic_show_resume_irq(struct gic_chip_data *gic)
 		else if (desc->irq_data.chip && desc->irq_data.chip->name)
 			name = desc->irq_data.chip->name;
 
+		log_irq_wakeup_reason(irq);
 		pr_warn("%s: irq:%d hwirq:%u triggered %s\n",
 			 __func__, irq, i, name);
 	}
