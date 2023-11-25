@@ -1005,6 +1005,11 @@ out:
 	return prog;
 }
 
+bool bpf_jit_supports_kfunc_call(void)
+{
+	return true;
+}
+
 u64 bpf_jit_alloc_exec_limit(void)
 {
 	return BPF_JIT_REGION_SIZE;
