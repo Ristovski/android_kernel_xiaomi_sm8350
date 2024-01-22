@@ -184,7 +184,7 @@ static QDF_STATUS wlan_mgmt_txrx_pdev_obj_create_notification(
 	mgmt_txrx_pdev_ctx->mgmt_txrx_stats = mgmt_txrx_stats;
 
 	qdf_wake_lock_create(&mgmt_txrx_pdev_ctx->wakelock_tx_cmp,
-			     "mgmt_txrx tx_cmp");
+			     "mgmt_txrx:tx_cmp");
 	qdf_runtime_lock_init(&mgmt_txrx_pdev_ctx->wakelock_tx_runtime_cmp);
 
 	if (wlan_objmgr_pdev_component_obj_attach(pdev,
